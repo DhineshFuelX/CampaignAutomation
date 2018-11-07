@@ -1,41 +1,47 @@
 package com.example.campaignautomation;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
-import javax.sql.DataSource;
-
-import org.slf4j.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.example.campaignautomation.dao.CampaignRepository;
-import com.example.campaignautomation.dao.EnterpriseRepository;
+import com.example.campaignautomation.service.CampaignService;
+import com.example.campaignautomation.service.EnterpriseService;
 
 @SpringBootApplication
 
-@EnableJpaRepositories("com.example.campaignautomation.dao")
-@EntityScan("com.example.campaignautomation.model")
+//@EnableJpaRepositories("com.example.campaignautomation.dao")
+//@EntityScan("com.example.campaignautomation.model")
 public class CampaignAutomationApplication implements CommandLineRunner{
 	
-	private static final Logger log = LoggerFactory.getLogger(CampaignAutomationApplication.class);
+	//private static final Logger log = LoggerFactory.getLogger(CampaignAutomationApplication.class);
 	
-	@Autowired
-    DataSource dataSource;
+//	@Autowired
+//	DataSource datasource;
+//	
+//	@Bean
+//	@Primary
+//	@ConfigurationProperties(prefix="fuelAsset.datasource")
+//	public DataSource fuelAssetDataSource() {
+//	    return DataSourceBuilder.create().build();
+//	}
+//
+//	@Bean
+//	@ConfigurationProperties(prefix="voyager.datasource")
+//	public DataSource voyagerDataSource() {
+//	    return DataSourceBuilder.create().build();
+//	}
  
     @Autowired
-    EnterpriseRepository enterpriseRepository;
+    EnterpriseService enterpriseService;
     
     @Autowired
-    CampaignRepository campaignRepository;
+    CampaignService campaignService;
     
-    @Autowired
-    JdbcTemplate jdbcTemplate;
+//    @Autowired
+//    JdbcTemplate jdbcTemplate;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CampaignAutomationApplication.class, args);
@@ -43,15 +49,16 @@ public class CampaignAutomationApplication implements CommandLineRunner{
 	
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("Our DataSource is = " + dataSource);
+    
+//        System.out.println("Our DataSource is = " + dataSource);
         
         //find all active bid's  (NOW its Active/inactive)
-        Iterable<com.example.campaignautomation.model.Enterprise> accountlist = enterpriseRepository.findAll();
-        for(com.example.campaignautomation.model.Enterprise systemmodel:accountlist){
+        Iterable<com.example.campaignautomation.model.fuelAsset.Enterprise> accountlist = enterpriseService.getAllenterprise();
+        for(com.example.campaignautomation.model.fuelAsset.Enterprise systemmodel:accountlist){
             System.out.println("Enterprise: " + systemmodel.toString());
             ///find all cid' which are active for this bid
-            Iterable<com.example.campaignautomation.model.Campaign> campaignlist = campaignRepository.findByBid(systemmodel.getId());
-            for(com.example.campaignautomation.model.Campaign camp:campaignlist){
+            Iterable<com.example.campaignautomation.model.fuelAsset.Campaign> campaignlist = campaignService.findByBid(systemmodel.getId());
+            for(com.example.campaignautomation.model.fuelAsset.Campaign camp:campaignlist){
             	System.out.println("		Campaign: " + camp.toString());
             }
         }

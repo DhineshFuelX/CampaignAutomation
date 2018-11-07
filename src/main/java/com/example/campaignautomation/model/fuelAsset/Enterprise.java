@@ -1,4 +1,5 @@
-package com.example.campaignautomation.model;
+package com.example.campaignautomation.model.fuelAsset;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,21 +7,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+ 
 @Entity
-@Table(name = "Campaign")
-public class Campaign {
-	private String name;
+@Table(name = "enterprises")
+public class Enterprise {
+	
+	private String company_name;
     private int status;
-    private long bid;
     
-    public long getBid() {
-		return bid;
-	}
-	public void setBid(long bid) {
-		this.bid = bid;
-	}
-	public int getStatus() {
+    
+    public int getStatus() {
         return status;
     }
     public void setStatus(int status) {
@@ -38,13 +34,13 @@ public class Campaign {
         this.id = id;
     }
     public String getName() {
-        return name;
+        return company_name;
     }
     public void setName(String name) {
-        this.name = name;
+        this.company_name = name;
     }
      
     public String toString(){
-        return id+" | " + name+ " | "+ status;
+        return id+" | " + company_name+ " | "+ status;
     }
 }

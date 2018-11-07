@@ -1,4 +1,4 @@
-package com.example.campaignautomation.dao;
+package com.example.campaignautomation.dao.fuelAsset;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import com.example.campaignautomation.model.Enterprise;
-import com.example.campaignautomation.model.Campaign;
+import com.example.campaignautomation.model.fuelAsset.Enterprise;
+import com.example.campaignautomation.model.fuelAsset.Campaign;
 
 @Repository
 public interface CampaignRepository extends CrudRepository<Enterprise, Long>{
