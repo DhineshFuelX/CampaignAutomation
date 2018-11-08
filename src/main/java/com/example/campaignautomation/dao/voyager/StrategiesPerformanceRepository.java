@@ -13,15 +13,15 @@ import com.example.campaignautomation.model.voyager.StrategiesPerformance;;
 @Repository
 public interface StrategiesPerformanceRepository extends CrudRepository<StrategiesPerformance, Long>{
 
-	@Query(value="SELECT reportDate, SUM(imp) as impressions \n" +
-			"      FROM StrategiesPerformance\n" + 
-			"        WHERE bid = :bid\n" + 
-			"        GROUP BY reportDate\n" + 
-			"        ORDER BY reportDate\n" + 
-			"        ASC")
-	List<StrategiesPerformance> findBidPerformance(@Param("bid") long bid);
+//	@Query(value="SELECT reportDate, SUM(imp) as impressions \n" +
+//			"      FROM StrategiesPerformance\n" + 
+//			"        WHERE bid = :bid\n" + 
+//			"        GROUP BY reportDate\n" + 
+//			"        ORDER BY reportDate\n" + 
+//			"        ASC")
+//	List<StrategiesPerformance> findBidPerformance(@Param("bid") long bid);
 	
-	
+//	List<StrategiesPerformance> findBidsPerformance(long Bid, Date start_date, Date end_date);
 //	@Query(value="SELECT e \n" + 
 //			"      FROM StrategiesPerformance e\n" + 
 //			"        WHERE e.bid = :bid\n" + 

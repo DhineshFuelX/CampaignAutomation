@@ -24,7 +24,6 @@ public class StrategiesPerformance {
     }
     private Date date;
     private long bid;
-    private long imp;
     private long impressions;
     private long clicks;
     private long wclicks;
@@ -52,18 +51,12 @@ public class StrategiesPerformance {
 	public void setBid(long bid) {
 		this.bid = bid;
 	}
-	public long getImp() {
-		return imp;
-	}
 	
 	public long getImpressions() {
 		return impressions;
 	}
 	public void setImpressions(long impressions) {
 		this.impressions = impressions;
-	}
-	public void setImp(long impressions) {
-		this.imp = impressions;
 	}
 	public long getClicks() {
 		return clicks;
@@ -131,6 +124,6 @@ public class StrategiesPerformance {
 //    }
     
 	public String toString(){
-        return date+ " | " + imp + " | " + clicks + " | " + wclicks + " | " + eclicks + " | " + spend + " | " + vtc + " | " + ctc + " | " + tc + " | " + vtc_ov + " | " + ctc_ov + " | " + tc_ov;
+        return date+ " | " + impressions + " | " + clicks + " | " + wclicks + " | " + eclicks + " | " + spend + " | " + vtc + " | " + ctc + " | " + tc + " | " + vtc_ov + " | " + ctc_ov + " | " + tc_ov;
     }
 }

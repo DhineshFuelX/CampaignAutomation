@@ -13,7 +13,7 @@ public class StrategiesPerformanceMapper implements RowMapper<StrategiesPerforma
 	@Override
 	public StrategiesPerformance mapRow(ResultSet rs, int rowNum) throws SQLException {
 		// TODO Auto-generated method stub
-		
+		System.out.println("in Mapper now...............");
 		StrategiesPerformance sp = new StrategiesPerformance();
 		sp.setDate(rs.getDate("date"));
 	    sp.setImpressions(rs.getLong("impressions"));
