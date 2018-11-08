@@ -15,6 +15,7 @@ public class StrategiesPerformanceMapper implements RowMapper<StrategiesPerforma
 	public StrategiesPerformance mapRow(ResultSet rs, int rowNum) throws SQLException {
 		// TODO Auto-generated method stub
 		DecimalFormat df = new DecimalFormat("#.00");
+		DecimalFormat df3 = new DecimalFormat("#.000");
 		StrategiesPerformance sp = new StrategiesPerformance();
 		sp.setBid(rs.getLong("bid"));
 		sp.setDate(rs.getDate("date"));
@@ -39,8 +40,88 @@ public class StrategiesPerformanceMapper implements RowMapper<StrategiesPerforma
 	    	sp.setCpa(0);
 	    }
 	    
+	    if(sp.getSpend()!=0)
+	    {
+	    	if(sp.getEclicks()!=0) {
+	    		sp.setCpec(Double.parseDouble(df.format(sp.getSpend()/sp.getEclicks())));
+	    	} else {
+	    		sp.setCpec(0);
+	    	}
+	    	if(sp.getWclicks()!=0) {
+	    		sp.setCpwc(Double.parseDouble(df.format(sp.getSpend()/sp.getWclicks())));
+	    	} else {
+	    		sp.setCpwc(0);
+	    	}
+			if(sp.getClicks()!=0) {
+				sp.setCpc(Double.parseDouble(df.format(sp.getSpend()/sp.getClicks())));
+			} else {
+				sp.setCpc(0);
+			}
+	    }
+	    else
+	    {
+	    	sp.setCpec(0);
+	    	sp.setCpwc(0);
+	    	sp.setCpc(0);
+	    }
 	    
+	    if(sp.getImpressions()!=0)
+	    {
+	    	if(sp.getEclicks()!=0) {
+	    		sp.setEctr(Double.parseDouble(df.format((sp.getEclicks()/sp.getImpressions()) * 100)));
+	    	} else {
+	    		sp.setEctr(0);
+	    	}
+	    	if(sp.getWclicks()!=0) {
+	    		sp.setWctr(Double.parseDouble(df.format((sp.getWclicks()/sp.getImpressions()) * 100)));
+	    	} else {
+	    		sp.setWctr(0);
+	    	}
+			if(sp.getClicks()!=0) {
+				sp.setCtr(Double.parseDouble(df.format((sp.getClicks()/sp.getImpressions()) * 100)));
+			} else {
+				sp.setCtr(0);
+			}
+			if(sp.getSpend()!=0) {
+				sp.setCpm(Double.parseDouble(df.format(sp.getSpend()/(sp.getImpressions()/1000))));
+			} else {
+				sp.setCpm(0);
+			}
+	    }
+	    else
+	    {
+	    	sp.setEctr(0);
+	    	sp.setWctr(0);
+	    	sp.setCtr(0);
+	    	sp.setCpm(0);
+	    }
 	    
+	    if(sp.getTc_ov() > 0)
+	    {
+	    	if(sp.getWclicks() > 0) {
+	    		sp.setRpv(Double.parseDouble(df.format(sp.getTc_ov()/sp.getWclicks())));
+	    	}else {
+	    		sp.setRpv(0);
+	    	}
+	    	
+	    	if(sp.getSpend() > 0) {
+	    		sp.setRoi(Double.parseDouble(df.format(sp.getTc_ov()/sp.getWclicks())));
+	    	}else {
+	    		sp.setRoi(0);
+	    	}
+	    	
+	    }
+	    else
+	    {
+	    	sp.setRpv(0);
+	    }
+	    
+	    if(sp.getTc() > 0 && sp.getWclicks() > 0)
+	    {
+	    	sp.setCr(Double.parseDouble(df3.format((sp.getTc()/sp.getWclicks()) * 100)));
+	    } else {
+	    	sp.setCr(0);
+	    }
 		return sp;
 	}
 

@@ -37,8 +37,81 @@ public class StrategiesPerformance {
     private double tc_ov;
     private double cpa;
     
+    private double cpec;
+    private double cpwc;
+    private double cpc;
     
+    private double ectr;
+    private double wctr;
+    private double ctr;
+    
+    private double rpv;
+    private double roi;
+    private double cr;
+    private double cpm;
 	
+    
+    
+	public double getCpec() {
+		return cpec;
+	}
+	public void setCpec(double cpec) {
+		this.cpec = cpec;
+	}
+	public double getCpwc() {
+		return cpwc;
+	}
+	public void setCpwc(double cpwc) {
+		this.cpwc = cpwc;
+	}
+	public double getCpc() {
+		return cpc;
+	}
+	public void setCpc(double cpc) {
+		this.cpc = cpc;
+	}
+	public double getEctr() {
+		return ectr;
+	}
+	public void setEctr(double ectr) {
+		this.ectr = ectr;
+	}
+	public double getWctr() {
+		return wctr;
+	}
+	public void setWctr(double wctr) {
+		this.wctr = wctr;
+	}
+	public double getCtr() {
+		return ctr;
+	}
+	public void setCtr(double ctr) {
+		this.ctr = ctr;
+	}
+	public double getRpv() {
+		return rpv;
+	}
+	public void setRpv(double rpv) {
+		this.rpv = rpv;
+	}
+	public double getRoi() {
+		return roi;
+	}
+	public void setRoi(double roi) {
+		this.roi = roi;
+	}
+	public double getCr() {
+		return cr;
+	}
+	public void setCr(double cr) {
+		this.cr = cr;
+	}
+	public double getCpm() {
+		return cpm;
+	}
+	public void setCpm(double cpm) {
+		this.cpm = cpm;
+	}
 	public double getCpa() {
 		return cpa;
 	}
@@ -129,7 +202,10 @@ public class StrategiesPerformance {
 //	public String toString(){
 //        return id+" | " + bid+ " | "+ cid +" | " + spd+ " | "+ cost +" | " + imp + " | " + clk + " | " + wclk + " | " + eclk + " | " + vtc + " | " + ctc + " | " + tc + " | " + vtc_ov + " | " + ctc_ov + " | " + tc_ov;
 //    }
-    
+	public String toPerfString(){
+        return bid + " | " +date+ " | " +cpa+" | " + cpm + " | " + roi + " | " + rpv + " | " + cr + " | " + ctr + " | " + wctr + " | " + ectr + " | " + cpec + " | " + cpwc + " | " + cpc;
+    }
+	
 	public String toString(){
         return bid + " | " +date+ " | " +cpa+" | " + impressions + " | " + clicks + " | " + wclicks + " | " + eclicks + " | " + spend + " | " + vtc + " | " + ctc + " | " + tc + " | " + vtc_ov + " | " + ctc_ov + " | " + tc_ov;
     }

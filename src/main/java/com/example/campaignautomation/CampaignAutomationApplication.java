@@ -60,7 +60,9 @@ public class CampaignAutomationApplication implements CommandLineRunner{
     		System.out.println("Strategies Performance");
     		for(com.example.campaignautomation.model.voyager.StrategiesPerformance sperf:stratPerfList){
 //    			System.out.println(sperf.toString());
-    			System.out.println("Date: " + sperf.getDate() + " Expected Value: " + cg.getGoal_value() + "  Current value: "+sperf.getCpa());
+//    			System.out.println("Date: " + sperf.getDate() + " Expected Value: " + cg.getGoal_value() + "  Current value: "+sperf.getCpa());
+    			System.out.println("Date: " + sperf.getDate() + " Expected Value: " + cg.getGoal_value() + "  Expected Goal Type: "+cg.getGoal());
+    			System.out.println(sperf.toPerfString());
     		}
     		
     		///find all cid' which are active for this bid
