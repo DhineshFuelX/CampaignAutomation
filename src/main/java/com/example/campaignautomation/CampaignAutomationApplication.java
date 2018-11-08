@@ -59,7 +59,8 @@ public class CampaignAutomationApplication implements CommandLineRunner{
     		Iterable<com.example.campaignautomation.model.voyager.StrategiesPerformance> stratPerfList = strategiesPerformanceService.findBidsPerformance(systemmodel.getId(), start_date, end_date);
     		System.out.println("Strategies Performance");
     		for(com.example.campaignautomation.model.voyager.StrategiesPerformance sperf:stratPerfList){
-    			System.out.println(sperf.toString());
+//    			System.out.println(sperf.toString());
+    			System.out.println("Date: " + sperf.getDate() + " Expected Value: " + cg.getGoal_value() + "  Current value: "+sperf.getCpa());
     		}
     		
     		///find all cid' which are active for this bid

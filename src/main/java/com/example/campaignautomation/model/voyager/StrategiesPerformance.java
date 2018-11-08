@@ -35,9 +35,16 @@ public class StrategiesPerformance {
     private double vtc_ov;
     private double ctc_ov;
     private double tc_ov;
+    private double cpa;
     
     
 	
+	public double getCpa() {
+		return cpa;
+	}
+	public void setCpa(double cpa) {
+		this.cpa = cpa;
+	}
 	public Date getDate() {
 		return date;
 	}
@@ -124,6 +131,6 @@ public class StrategiesPerformance {
 //    }
     
 	public String toString(){
-        return date+ " | " + impressions + " | " + clicks + " | " + wclicks + " | " + eclicks + " | " + spend + " | " + vtc + " | " + ctc + " | " + tc + " | " + vtc_ov + " | " + ctc_ov + " | " + tc_ov;
+        return bid + " | " +date+ " | " +cpa+" | " + impressions + " | " + clicks + " | " + wclicks + " | " + eclicks + " | " + spend + " | " + vtc + " | " + ctc + " | " + tc + " | " + vtc_ov + " | " + ctc_ov + " | " + tc_ov;
     }
 }

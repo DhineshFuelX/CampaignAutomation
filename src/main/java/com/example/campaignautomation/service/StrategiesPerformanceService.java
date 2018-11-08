@@ -43,14 +43,16 @@ public class StrategiesPerformanceService {
 //	      parameters.addValue("start_date", start_date);
 //	      parameters.addValue("end_date", end_date);
 		System.out.println(Bid+" | "+ start_date +" | "+end_date);
-		return jdbcTemplate.query("SELECT reportDate AS date, sum(imp) as impressions, sum(clk) as clicks, sum(wclk) as wclicks, \n" + 
+		return jdbcTemplate.query("SELECT bid, reportDate AS date, sum(imp) as impressions, sum(clk) as clicks, sum(wclk) as wclicks, \n" + 
 				"       sum(eclk) as eclicks, sum(cost) as spend, sum(vtc) as vtc, sum(ctc) as ctc, sum(tc) as tc, \n" + 
 				"       sum(vtc_ov) as vtc_ov, sum(ctc_ov) as ctc_ov, sum(tc_ov) as tc_ov \n" + 
 				"      FROM strategiesReportProd \n" + 
-				"        WHERE bid = 1932 \n" +
+				"        WHERE bid = ? \n" +
+				"        AND reportDate \n" + 
+				"        BETWEEN ? AND ? \n" + 
 				"        GROUP BY reportDate \n" + 
 				"        ORDER BY reportDate \n" + 
-				"        ASC", new StrategiesPerformanceMapper());
+				"        ASC", new Object[] {Bid, start_date, end_date}, new StrategiesPerformanceMapper());
 //		return jdbcTemplate.query("SELECT reportDate AS date, sum(imp) as impressions, sum(clk) as clicks, sum(wclk) as wclicks, \n" + 
 //				"      sum(eclk) as eclicks, sum(cost) as spend, sum(vtc) as vtc, sum(ctc) as ctc, sum(tc) as tc, \n" + 
 //				"      sum(vtc_ov) as vtc_ov, sum(ctc_ov) as ctc_ov, sum(tc_ov) as tc_ov \n" + 
