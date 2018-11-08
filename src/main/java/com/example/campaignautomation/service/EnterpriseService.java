@@ -17,4 +17,14 @@ public class EnterpriseService {
         return (List) enterpriseRepo.findAll();
     }
 
+//	public String findBidStatus(long id) {
+//		// TODO Auto-generated method stub
+//		return enterpriseRepo.findBidStatus(id);
+//	}
+	
+	public List<Enterprise> findAllBids() {
+		// TODO Auto-generated method stub
+		return enterpriseRepo.findAllBids();
+	}
+
 }

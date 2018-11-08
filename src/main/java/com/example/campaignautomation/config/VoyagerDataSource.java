@@ -6,6 +6,7 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -15,14 +16,15 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
+
+@Configuration
 @EnableJpaRepositories(basePackages = {"com.example.campaignautomation.dao.voyager"},
-entityManagerFactoryRef = "voyagerEntityManager",
-transactionManagerRef = "voyagerTransactionManager")
+						entityManagerFactoryRef = "voyagerEntityManager",
+						transactionManagerRef = "voyagerTransactionManager")
 public class VoyagerDataSource {
 	@Autowired
     private Environment env;
     @Bean
-    @Primary
     public LocalContainerEntityManagerFactoryBean voyagerEntityManager() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(voyagerDatasource());
@@ -39,7 +41,6 @@ public class VoyagerDataSource {
         return em;
     }
 
-    @Primary
     @Bean
     public DataSource voyagerDatasource() {
 
